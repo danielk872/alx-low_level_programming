@@ -3,15 +3,13 @@
 #include <string.h>
 #include "lists.h"
 #include "1-listint_len.c"
-
 /**
- * insert_node_at_index - for inserting a node at idx
+ * insert_nodeint_at_index - for inserting node;
  * @head: the head pointer
  * @idx: the index
  * @n: the integer data
  * Return: returns 0
  */
-
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	listint_t *ptr;
@@ -29,10 +27,15 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	new_node = malloc(sizeof(listint_t));
 	new_node->n = n;
 	new_node->next = NULL;
+
+	if (!new_node)
+	{
+		free(new_node);
+		return (NULL);
+	}
 	if (head == NULL)
 	{
 		*head = new_node;
-		return (new_node);
 	}
 	if (idx > len)
 	{
